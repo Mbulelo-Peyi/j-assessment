@@ -13,7 +13,7 @@ class MainViewset(viewsets.ViewSet):
             if not data or data == "":
                 return Response({"error": "Missing 'data' field."}, status=status.HTTP_400_BAD_REQUEST)
             
-            arr = sorted(data)
+            arr = sorted(data.lower())
             return Response({"word": arr}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
